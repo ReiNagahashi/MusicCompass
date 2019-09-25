@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Seeder;
 
-class prefecture_locationSeeder extends Seeder
+class PrefecturesSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -11,7 +11,7 @@ class prefecture_locationSeeder extends Seeder
      */
     public function run()
     {
-
+        
         $prefectures = [
             ['id' => 1, 'name' => '北海道'],
             ['id' => 2, 'name' => '青森県'],
