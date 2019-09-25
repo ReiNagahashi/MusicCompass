@@ -12,22 +12,6 @@ class prefecture_locationSeeder extends Seeder
     public function run()
     {
 
-    //     $locations = [
-    //         ['id' => 1, 'name' => 'コンサートホール'],
-    //         ['id' => 2, 'name' => 'ライブハウス'],
-    //         ['id' => 3, 'name' => 'クラブ'],
-    //         ['id' => 4, 'name' => 'レストラン/バー'],
-    //         ['id' => 5, 'name' => '学校'],
-    //         ['id' => 6, 'name' => '野外'],
-    //         ['id' => 7, 'name' => 'その他'],
-           
-            
-
-    //     ];
-    //     DB::table('locations')->insert($locations);
-    // }
-
-
         $prefectures = [
             ['id' => 1, 'name' => '北海道'],
             ['id' => 2, 'name' => '青森県'],
