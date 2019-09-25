@@ -1,0 +1,46 @@
+.full-height {
+    height: 100vh;
+}
+
+#page1 {
+  background-image:url("../uploads/background/audience-1853662_1280.jpg");
+  /* background-repeat:no-repeat; */
+  background-size: cover;
+  position: relative;
+  padding-top: 15%;
+}
+
+
+.contentH2 h2{
+  color: #fff;
+  font-size: 3vw;
+  padding: 0 10%;
+}
+
+
+.flex-center {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+}
+
+.position-ref {
+    position: relative;
+    padding-top: 100px;
+}
+
+
+.content {
+    text-align: center;
+}
+
+
+.m-b-md {
+    margin-bottom: 30px;
+}
+
+.title {
+    font-size: 70px;
+    font-family: 'Beth Ellen', cursive;
+    color: #D6270C;
+}

@@ -1,0 +1,9 @@
+.formG_S{
+    display: flex;
+}
+
+.labelG_S{
+    margin-left:10px;
+}
+
+/* これはクリエイトページなどでの性別・ジャンルを横並びにさせるための記述である */

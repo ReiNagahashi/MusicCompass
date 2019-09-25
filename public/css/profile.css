@@ -1,0 +1,41 @@
+.contents{
+    background-image:url("../uploads/background/nick-fewings-9P1pZy3gwxg-unsplash.jpg");
+    background-repeat:no-repeat;
+    background-size: 100% 100%;
+    padding: 40px;
+  }
+
+
+.null{
+  height: 20px;
+}
+
+.forH{
+  margin:5% auto;
+  color: #F3589E;
+}
+.forH h1{
+  font-family: 'Permanent Marker', cursive;
+  font-size: 50px;
+}
+/* ここまでホライゾン */
+.contentBox1{
+  background-color:rgba(215, 219, 221, 0.7);
+  padding:2.5rem;
+}
+
+hr {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    border: 0;
+    border-top: 2px solid white;
+}
+
+ul {
+  border-radius: 10%;
+}
+
+.comment{
+  color: #fff;
+}
+

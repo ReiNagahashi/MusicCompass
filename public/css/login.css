@@ -1,0 +1,91 @@
+.forImage{
+    background-image: url("https://www.needpix.com/file_download.php?url=//storage.needpix.com/rsynced_images/radio-city-music-hall-2617958_1280.jpg");
+    background-repeat:no-repeat;
+    background-size: cover;
+  }
+  
+  hr {
+      margin-top: 1rem;
+      margin-bottom: 1rem;
+      border: 0;
+      border-top: 2px solid white;
+      margin: 5% auto;
+  }
+  #travel{
+    color: #fff;
+  }
+  
+  form{
+    width: 100%;
+    max-width: 330px;
+    padding: 15px;
+    margin: auto;
+  }
+  
+  
+  .join-content-box{
+    background: #fff;
+    padding: 2% 4%;
+    border-radius: 5%;
+  }
+  #faceBox{
+      padding:9%; 
+      background-color: #e9ecef;
+  }
+  
+  
+  #passBox{
+    background-color: #e9ecef;
+  }　
+  
+  .btn1{
+    background-color: #3b5998;
+  
+  }
+  
+  #faceBox a{
+    background-color: #3b5998;
+    color: #fff;
+  }
+  
+  .null{
+    height: 20px;
+  
+  }
+  
+  .btn2{
+    background: #17a2b8;
+    color: #fff;
+  
+  }
+  
+  .forSignIn {
+    padding-bottom: 7%;
+  }
+  .forSignIn a{
+    font-size: 25px;
+    color: #fff;
+    text-decoration: none;
+  }
+  
+  footer ul{
+        margin: 1%;
+        text-align: center;
+  }
+  
+  footer ul li {
+    display: inline;
+  }
+  footer ul li a:link {
+      text-decoration: none;
+      margin-right: 5%;
+  }
+  
+  footer ul li a{
+    color: #636b6f;
+    padding: 0px 20px;
+    font-size: 15px;
+    font-weight: 600;
+    letter-spacing: .1rem;
+  }
+  

@@ -1,0 +1,76 @@
+.forImage{
+  padding-top: 5%;
+  background-image:url("../uploads/background/ethan-judd-yVKGWunM960-unsplash.jpg");
+    background-size: cover;
+    padding-bottom: 8%
+}
+
+#forB{
+ border-bottom: 3px solid #fff;
+}
+.card-header{
+ background: #F0F0F0;
+}
+
+.card-body h1{
+
+  /* font-size: 1.5em; */
+  margin-top: 0;
+  margin-bottom: 30px;
+  padding: 5px 10px;
+  text-align: left;
+  border-bottom: 1px solid #135F98;
+  border-left: 10px solid #135F98;
+
+}
+
+.card-content{
+ background-color: #f7f9f9;
+ height: 250px;
+ padding: 18% 8% 5% 8%;
+ text-align: center;
+}
+
+
+.forJustify{
+ display: flex;
+ justify-content: space-between;
+}
+
+.icon{
+ position: absolute;
+ top: 36%;
+ left: 36%;
+}
+
+hr {
+   margin-top: 1rem;
+   margin-bottom: 1rem;
+   border: 0;
+   border-top: 2px solid white;
+}
+
+/*  */
+.cardSearch{
+  display: block;
+  margin-top: 5%;
+}
+
+
+.forBack{
+  margin-top: 5%;
+
+  background-color: #fff;
+
+}
+/*  */
+
+.comment{
+  color: #fff;
+}
+
+/* single用 */
+.parentPanel{
+  background-color: #fff;
+}
+/*  */

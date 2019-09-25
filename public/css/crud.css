@@ -1,0 +1,30 @@
+.card{
+    padding-top: 10%;
+    background-image:url("../uploads/background/ethan-judd-yVKGWunM960-unsplash.jpg");
+    background-size: cover;
+    padding-bottom: 8%
+}
+
+.card-header{
+    background-color: #fff;
+}
+
+.contentBox1{
+    background-color:rgba(215, 219, 221, 0.7);
+    padding:2.5rem;
+  }
+
+#commentBody{
+    color: #fff;
+}
+
+a{
+    color: dodgerblue;
+    font-weight:800;
+}
+
+/* マーカー専用 */
+b{
+    background:linear-gradient(transparent 76%, #F7539D 0%);
+}
+/*  */
