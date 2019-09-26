@@ -32,13 +32,13 @@
                     </div>
                     <div class="form-group text-center">
                         <label for="description">内容</label>
-                        <textarea name="description" cols="10" rows="10" class="form-control">{{isset($post) ? $post->description:""}}</textarea>
+                        <textarea name="description" cols="10" rows="10" class="form-control" placeholder="※こちらに、イベントの日時や集合場所等についての詳細を含めてください。">{{isset($post) ? $post->description:""}}</textarea>
                     </div>
-                    <div class="form-group formGenre">
+                    <div class="form-group formG_S">
                             <label for="genres">ジャンル</label>
                          @foreach($genres as $genre)
                             <div class="checkbox">
-                                        <label><input type="checkbox" class="labelGenre" name="genres[]" value="{{$genre->id}}"
+                                        <label><input type="checkbox" class="labelG_S" name="genres[]" value="{{$genre->id}}"
                                             @if(isset($post))
                                                 @foreach($post->genres as $gen)
                                                     @if($genre->id == $gen->id)
@@ -52,7 +52,7 @@
                     </div>
            　　     <div class="form-group text-center">
                         <label for="condition">参加条件</label>
-                        <textarea name="condition" class="form-control"　placeholder="例:演奏をじっくり楽しみたい人、お酒が飲める人etc...">{{isset($post) ? $post->condition:""}}</textarea>
+                        <textarea name="condition" cols="5" rows="1" class="form-control" placeholder="例:演奏をじっくり楽しみたい人、お酒が飲める人etc...">{{isset($post) ? $post->condition:""}}</textarea>
                     </div>
                     <div class="form-group text-center">
                         <label for="location">会場名</label>

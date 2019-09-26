@@ -31,11 +31,6 @@ Route::get('/about',[
 
 
 
-// Route::get('/search',[
-//     'uses' => 'PostsController@search',
-//     'as'  => 'posts.search'
-// ]);
-
 // ここからUsersController
 
 Route::group(['middleware'=>'auth'],function(){
@@ -54,6 +49,12 @@ Route::group(['middleware'=>'auth'],function(){
         'uses' => 'PostsController@edit',
         'as'  => 'posts.edit'
     ]);
+
+    Route::get('/posts/create',[
+        'uses' => 'PostsController@create',
+        'as'  => 'posts.create'
+    ]);
+    
     
 
     Route::get('/attendees/{post}',[

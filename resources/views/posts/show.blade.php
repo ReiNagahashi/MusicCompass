@@ -14,6 +14,7 @@
                 <div class="card-text mb-4">
                     <ul class="list-group list-group-flush">
                         <li class="list-group-item"><b>内容: </b>{{$post->description}}</li>
+                        <li class="list-group-item"><b>会場名: </b>{{$post->locationName}} (会場タイプ:{{$post->location->name}})</li>
                         <li class="list-group-item"><b>参加条件: </b>{{$post->condition}}</li>
                         <li class="list-group-item"><b>詳細・連絡アドレス: </b>{{$post->address}}</li>
                         <li class="list-group-item"><b>ジャンル: </b>

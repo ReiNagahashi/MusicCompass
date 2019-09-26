@@ -63,7 +63,7 @@ class PostsController extends Controller{
                 'condition'=>'required|min:3',
                 'image'=>'required',
                 'location'=>'required',
-                'address'=>'required',
+                'address'=>'required|max:80',
                 'prefecture_id'=>'required',
                 'location_id'=>'required',
                 'genres'=>'required',
