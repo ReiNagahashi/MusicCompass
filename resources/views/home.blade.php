@@ -13,6 +13,7 @@
                         </div>
                             <input type="submit" value="検索" class="btn btn-info float-right mb-3">
                     </form>
+                    
                     <a class="btn btn-success" href="{{route('posts.create')}}">新規投稿</a>
                     @if(isset($keyword))
                       <section class="card cardSearch">

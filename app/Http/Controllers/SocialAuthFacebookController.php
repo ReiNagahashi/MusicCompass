@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Auth;
 
 use Illuminate\Http\Request;
 use Socialite;
@@ -13,19 +13,17 @@ class SocialAuthFacebookController extends Controller
    *
    * @return void
    */
-  public function redirect()
+  public function redirectToProvider()
   {
-      return Socialite::driver('facebook')->redirect();
+      return Socialite::driver('facebook')->stateless()->redirect();
   }
   /**
    * Return a callback method from facebook api.
    *
    * @return callback URL from facebook
    */
-  public function callback(SocialFacebookAccountService $service)
+  public function handleProviderCallback()
   {
-      $user = $service->createOrGetUser(Socialite::driver('facebook')->user());
-      auth()->login($user);
-      return redirect()->to('/home');
+      $user = Socialite::driver('facebook')->stateless()->user();
   }
 }

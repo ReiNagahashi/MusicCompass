@@ -33,6 +33,23 @@ class HomeController extends Controller
     public function index(Request $request)
     {
 
+        // $keyword = $request->get('keyword');
+            
+    
+        //     //もしキーワードが入力されている場合 
+        //     if(!empty($keyword))
+        //     {   
+        //         //名前から検索
+        //         $keyPres = Prefecture::where('name', 'like', '%'.$keyword.'%')->get();
+
+        //         $keyPosts = Post::where('title', 'like', '%'.$keyword.'%')->orWhere('description','like','%'.$keyword.'%')->orWhere('name','like',$keyword)->get();
+
+        //         $results = array_merge($keyPres->toArray(),$keyPosts->toArray());
+        //         $results = new Paginator($results,10);
+
+        //         $myposts = Post::where('user_id', Auth::id())->orderBy('created_at','desc')->Paginate(3);
+                // ここまで
+
         $keyword = $request->input('keyword');
             
     
@@ -42,10 +59,12 @@ class HomeController extends Controller
                 //名前から検索
                 $keyPosts = Post::where('title', 'like', '%'.$keyword.'%')->orWhere('description','like','%'.$keyword.'%')->Paginate(3);
 
+                // $keyPres = Prefecture::where('name', 'like', '%'.$keyword.'%')->Paginate(3);
+
 
                 $myposts = Post::where('user_id', Auth::id())->orderBy('created_at','desc')->Paginate(3);
 
-                        // ->paginate(4);
+        //                 ->paginate(4);
     
                 // //リレーション関係にあるテーブルの材料名から検索
                 // $recipes = Recipe::whereHas('ingredients', function ($query) use ($keyword){

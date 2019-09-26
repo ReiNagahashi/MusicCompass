@@ -13,6 +13,9 @@ use App\Comment;
 use App\Genre;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Storage;
+
+
 
 
 class PostsController extends Controller{
@@ -84,10 +87,11 @@ class PostsController extends Controller{
             $post->location_id =$request->location_id;
             $post->user_id = Auth::user()->id;
     
+
             $image = $request->image;
-            $post_image_new_name = time().$image->getClientOriginalName();
-            $image->move('uploads/images',$post_image_new_name);
-            $post->post_image = 'uploads/images/'.$post_image_new_name;
+            $uploadImg = $image->image = $request->file('image');
+            $path = Storage::disk('s3')->putFile('/',$uploadImg,'public');
+            $post->post_image = Storage::disk('s3')->url($path);
     
     
             $post->save();
@@ -137,9 +141,9 @@ class PostsController extends Controller{
 
                 if($request->hasFile('image')){
                 $image = $request->image;
-                $image_new_name = time().$image->getClientOriginalName();
-                $image->move('uploads/images',$image_new_name);
-                $post->post_image = 'uploads/images/'.$image_new_name;
+                $uploadImg = $image->image = $request->file('image');
+                $path = Storage::disk('s3')->putFile('/',$uploadImg,'public');
+                $post->post_image = Storage::disk('s3')->url($path);
                 }
             
                 $post->save();

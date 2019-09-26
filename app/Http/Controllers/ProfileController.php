@@ -9,6 +9,7 @@ use App\Sex;
 use App\Profile; 
 use App\Follow; 
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Storage;
 
 
 
@@ -62,14 +63,14 @@ class ProfileController extends Controller
 
         if($request->hasFile('avatar')){
 
-       
-            $avatar = $request->file('avatar');
-            $avatar_new_name = time().$avatar->getClientOriginalName();
-            $avatar->move('uploads/avatars/',$avatar_new_name);
-            $user->profile->avatar = 'uploads/avatars/'.$avatar_new_name;
+            $avatar = $request->avatar;
+            $uploadImg = $avatar->avatar = $request->file('avatar');
+            $path = Storage::disk('s3')->putFile('/',$uploadImg,'public');
+            $user->profile->avatar = Storage::disk('s3')->url($path);
             $user->profile->save();
-            
+
     }
+
 
 
         $user->profile->age=$request->age;
@@ -156,10 +157,11 @@ class ProfileController extends Controller
         $profile->sex_id =$request->sex_id;
         $profile->user_id = Auth::user()->id;
 
-        $avatar = $request->file('avatar');
-        $avatar_new_name = time().$avatar->getClientOriginalName();
-        $avatar->move('uploads/avatars',$avatar_new_name);
-        $profile->avatar = 'uploads/avatars/'.$avatar_new_name;
+        $avatar = $request->avatar;
+        $uploadImg = $avatar->avatar = $request->file('avatar');
+        $path = Storage::disk('s3')->putFile('/',$uploadImg,'public');
+        $profile->avatar = Storage::disk('s3')->url($path);
+        $profile->save();
 
         $profile->save();
 
