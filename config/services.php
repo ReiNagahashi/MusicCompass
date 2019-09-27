@@ -51,8 +51,8 @@ return [
     ],
 
     // 'facebook' => [
-    //     'client_id' => '2425016620908119',
-    //     'client_secret' => '5a83d181e82e7992e22bf17d1b097650',
-    //     'redirect' => 'https://www.musicStreet.com/laravel-example/callback/facebook',
-    // ],
+    //     'client_id' => env('FACEBOOK_APP_ID'),
+    //     'client_secret' => env('FACEBOOK_APP_SECRET'),
+    //     'redirect' => env('FACEBOOK_REDIRECT'),
+    //   ],
 ];
