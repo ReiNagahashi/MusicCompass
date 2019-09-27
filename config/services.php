@@ -44,15 +44,15 @@ return [
         ],
     ],
 
-    // 'facebook' => [
-    //     'client_id' => '2134959343473119',
-    //     'client_secret' => '94256fb23d7bf2487be336b1ca2b5919',
-    //     'redirect' => 'https://musiccompassrei.herokuapp.com/login/facebook/callback',
-    // ],
-
     'facebook' => [
-        'client_id' => env('FACEBOOK_APP_ID'),
-        'client_secret' => env('FACEBOOK_APP_SECRET'),
-        'redirect' => env('FACEBOOK_REDIRECT'),
-      ],
+        'client_id' => '2134959343473119',
+        'client_secret' => '94256fb23d7bf2487be336b1ca2b5919',
+        'redirect' => 'https://musiccompassrei.herokuapp.com/callback',
+    ],
+
+    // 'facebook' => [
+    //     'client_id' => env('FACEBOOK_APP_ID'),
+    //     'client_secret' => env('FACEBOOK_APP_SECRET'),
+    //     'redirect' => env('FACEBOOK_REDIRECT'),
+    //   ],
 ];
