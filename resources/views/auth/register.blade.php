@@ -12,14 +12,7 @@
                 <hr>
                 <div class="text-center">
                 <h1 id="travel">早速、音楽の旅に出かけよう</h1>　
-                <div class="row py-5">
-                    <div class="join-content-box col-md-5" id="faceBox">
-                    <h2 class="mb-4"><b>フェイスブックで登録</b></h2>
-                    <a href="{{url('/redirect')}}" class="btn btn-block btn1">FaceBook アカウント</a>
-                    </div>
-                    <div class="col-md-2 null">
-                    </div>
-                    <div class="join-content-box col-md-5" id="passBox">
+                    <div class="join-content-box" id="passBox">
                     <h1>サインアップ</h1>
                     <form method="POST" action="{{ route('register') }}">
                         @csrf
@@ -83,7 +76,6 @@
                         </div>
                     </form>
                 </div>
-              </div>
               <div class="forSignIn">
                 <a href="{{ route('login') }}">サインインはこちら</a>
               </div>

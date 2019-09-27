@@ -48,6 +48,9 @@
                       </section>
                       @endif
 
+                      <p>My name: {{Auth::user()->name}}</p>
+                      <p>My Email: {{Auth::user()->email}}</p>
+
          @if(count($posts) == 0 && count($myposts) == 0)
 
           <h2 class="text-center comment mt-5">まだ投稿がありません。<a href="{{route('posts.create')}}">こちら</a>から投稿してください！</h2>

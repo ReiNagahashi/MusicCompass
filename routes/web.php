@@ -112,9 +112,6 @@ Route::post('/commentStore',[
 
 // ここからsocialiteのルーティング2つ
 
-Route::get('/redirect', 'SocialAuthFacebookController@redirect');
-Route::get('/callback', 'SocialAuthFacebookController@callback');
-
 
 Route::put('/profile/update',[
     'uses' => 'ProfileController@update',
