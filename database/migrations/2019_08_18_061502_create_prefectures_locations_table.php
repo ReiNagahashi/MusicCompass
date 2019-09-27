@@ -11,16 +11,16 @@ class CreatePrefecturesLocationsTable extends Migration
      *
      * @return void
      */
-    public function up()
-    {
-        Schema::create('prefectures', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->string('name');
-            $table->timestamps();
-        });
+    // public function up()
+    // {
+    //     Schema::create('prefectures', function (Blueprint $table) {
+    //         $table->bigIncrements('id');
+    //         $table->string('name');
+    //         $table->timestamps();
+    //     });
 
         
-    }
+    // }
 
     /**
      * Reverse the migrations.
