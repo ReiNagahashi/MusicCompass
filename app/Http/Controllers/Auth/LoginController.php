@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers\Auth;
 
+use Laravel\Socialite\Facades\Socialite;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
-use Socialite;
 
 class LoginController extends Controller
 {
@@ -18,20 +18,6 @@ class LoginController extends Controller
     | to conveniently provide its functionality to your applications.
     |
     */
-    public function redirectToProvider()
-    {
-        return Socialite::driver('facebook')->stateless()->redirect();
-    }
-    /**
-     * Return a callback method from facebook api.
-     *
-     * @return callback URL from facebook
-     */
-    public function handleProviderCallback()
-    {
-        $user = Socialite::driver('facebook')->stateless()->user();
-    }
-
 
     use AuthenticatesUsers;
 
@@ -50,5 +36,25 @@ class LoginController extends Controller
     public function __construct()
     {
         $this->middleware('guest')->except('logout');
+    }
+
+    public function redirectToProvider()
+    {
+        return Socialite::driver('facebook')->redirect();
+    }
+
+    /**
+     * Obtain the user information from GitHub.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function handleProviderCallback()
+    {
+        $user = Socialite::driver('facebook')->user();
+
+        
+
+        $user->token;
+        $user->name;
     }
 }

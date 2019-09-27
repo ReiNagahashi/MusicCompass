@@ -13,7 +13,7 @@
                 <div class="row py-5">
                     <div class="join-content-box col-md-5" id="faceBox">
                         <h2 class="mb-4"><b>フェイスブックを使う</b></h2>
-                        <a href="{{url('/redirect')}}" class="btn btn-block btn1">FaceBook アカウント</a>
+                        <a href="login/facebook" class="btn btn-block btn1">FaceBook アカウント</a>
                     </div>
                     <div class="col-md-2 null">
                     </div>

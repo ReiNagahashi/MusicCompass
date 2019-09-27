@@ -116,7 +116,6 @@ Route::get('login/facebook', 'Auth\LoginController@redirectToProvider');
 Route::get('login/facebook/callback', 'Auth\LoginController@handleProviderCallback');
 
 
-
 Route::put('/profile/update',[
     'uses' => 'ProfileController@update',
     'as'  => 'profile.update'
