@@ -54,8 +54,8 @@ Route::group(['middleware'=>'auth'],function(){
         'uses' => 'PostsController@create',
         'as'  => 'posts.create'
     ]);
-    
-    
+
+
 
     Route::get('/attendees/{post}',[
         'uses' => 'PostsController@single',
