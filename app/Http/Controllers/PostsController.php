@@ -99,7 +99,7 @@ class PostsController extends Controller{
             'key' => env('AWS_ACCESS_KEY_ID'),
             'secret' => env('AWS_SECRET_ACCESS_KEY'),
         ],
-        'region' => 'us-west-1',
+        'region' => 'us-east-1',
         'version' => 'latest',
     ]);
     
