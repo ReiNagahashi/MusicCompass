@@ -133,4 +133,7 @@ Route::post('/profile-store',[
     'as'  => 'profile.store'
 ]);
 
+Route::get('/image', 'ImageController@index');
+Route::post('/image', 'ImageController@store')->name('image.store');
+
 
