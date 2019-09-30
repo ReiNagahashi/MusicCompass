@@ -86,9 +86,7 @@
                 <h1>自分の投稿：</h1>
                 <div class="row post">
                 @foreach($myposts as $mypost)
-                    
-                @if(Auth::user()->id == $mypost->user_id)
-                    <div class="col-md-4">
+                     <div class="col-md-4">
                         <div class="card-img">
                           <a href="{{route('posts.show',['post' => $mypost->id])}}">
                               <img src="{{asset($mypost->post_image)}}"alt="{{$mypost->title}}" height="225px" width="100%">
@@ -104,7 +102,6 @@
                      </div>
                    </div>
                 </div>
-                @endif
                 @endforeach
             </div>
           @endif
