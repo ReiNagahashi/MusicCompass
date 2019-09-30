@@ -24,15 +24,6 @@ class ImageController extends Controller
     {
         $image = new Image();
         $uploadImg = $image->image = $request->file('image');
-        
-require('vendor/autoload.php');
-// this will simply read AWS_ACCESS_KEY_ID and AWS_SECRET_ACCESS_KEY from env vars
-$s3 = new Aws\S3\S3Client([
-    'version'  => 'latest',
-    'region'   => 'ap-northeast-1',
-]);
-$bucket = getenv('S3_BUCKET')?: die('No "S3_BUCKET" config var in found in env!');
-
         $path = Storage::disk('s3')->putFile('/', $uploadImg, 'public');
         $image->image = Storage::disk('s3')->url($path);
         $image->save();
