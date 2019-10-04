@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers\Auth;
 
-use Laravel\Socialite\Facades\Socialite;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Socialite;
+use App\User;
+use Auth;
 
 class LoginController extends Controller
 {
@@ -38,23 +40,37 @@ class LoginController extends Controller
         $this->middleware('guest')->except('logout');
     }
 
-    // public function redirectToProvider()
-    // {
-    //     return Socialite::driver('facebook')->redirect();
-    // }
+    public function socialLogin($social){
+        return Socialite::driver($social)->redirect();
+    }
 
-    // /**
-    //  * Obtain the user information from GitHub.
-    //  *
-    //  * @return \Illuminate\Http\Response
-    //  */
-    // public function handleProviderCallback()
-    // {
-    //     $user = Socialite::driver('facebook')->user();
+    public function handleProviderCallback($social){
+        $userSocial = Socialite::driver($social)->stateless()->user();
 
-        
+        //こんなwhereの書き方があるのか！！これはもしかしたら他のページで参考になるかもしれない！
+        $user = User::where(['email' => $userSocial->getEmail()])->first();
 
-    //     $user->token;
-    //     $user->name;
-    // }
+
+        //登録（email）の有無で分岐
+        if($user){
+
+            //登録あればそのままログイン（2回目以降）
+            Auth::login($user);
+            return redirect('/home');
+
+        }else{
+
+            //なければ登録（初回）
+            $newuser = new User;
+            $newuser->name = $userSocial->getName();
+            $newuser->email = $userSocial->getEmail();
+            $newuser->save();
+
+            //そのままログイン
+            Auth::login($newuser);
+            return redirect('/home');
+
+        }
+    }
+
 }

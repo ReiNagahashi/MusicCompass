@@ -13,6 +13,8 @@
 
                     <div class="join-content-box" id="passBox">
                         <h2>サインイン</h2>
+                      <h3><a href="{{ url('login/facebook')}}" class="btn btn-social-icon btn-facebook"><i class="fa fa-facebook"></i></a></h3>
+
                     <form method="POST" action="{{ route('login') }}">
                             @csrf
                             <div class="form-group row">

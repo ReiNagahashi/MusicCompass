@@ -11,7 +11,15 @@
             <div class="container">
                 <hr>
                 <div class="text-center">
-                <h1 id="travel">早速、音楽の旅に出かけよう</h1>　
+                <h1 id="travel">早速、音楽の旅に出かけよう</h1>
+                
+                    <div class="form-group row">
+                         <label for="name" class="col-sm-4 col-form-label text-md-right">Login With</label>
+                        <div class="col-md-6">
+                            <a href="{{ url('login/facebook')}}" class="btn btn-social-icon btn-facebook"><i class="fa fa-facebook"></i></a>
+                        </div>
+                    </div>
+                    　
                     <div class="join-content-box" id="passBox">
                     <h1>サインアップ</h1>
                     <form method="POST" action="{{ route('register') }}">

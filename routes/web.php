@@ -112,6 +112,10 @@ Route::post('/commentStore',[
 
 // ここからsocialiteのルーティング2つ
 
+Route::get('/login/{social}','Auth\LoginController@socialLogin')->where('social','facebook');
+
+Route::get('/login/{social}/callback','Auth\LoginController@handleProviderCallback')->where('social','facebook');
+
 
 Route::put('/profile/update',[
     'uses' => 'ProfileController@update',
