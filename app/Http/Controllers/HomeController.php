@@ -32,59 +32,69 @@ class HomeController extends Controller
      */
     public function index(Request $request)
     {
-
-        // $keyword = $request->get('keyword');
-            
-    
-        //     //もしキーワードが入力されている場合 
-        //     if(!empty($keyword))
-        //     {   
-        //         //名前から検索
-        //         $keyPres = Prefecture::where('name', 'like', '%'.$keyword.'%')->get();
-
-        //         $keyPosts = Post::where('title', 'like', '%'.$keyword.'%')->orWhere('description','like','%'.$keyword.'%')->orWhere('name','like',$keyword)->get();
-
-        //         $results = array_merge($keyPres->toArray(),$keyPosts->toArray());
-        //         $results = new Paginator($results,10);
-
-        //         $myposts = Post::where('user_id', Auth::id())->orderBy('created_at','desc')->Paginate(3);
-                // ここまで
-
+ 
         $keyword = $request->input('keyword');
+        $prefecture_id = $request->prefecture_id;
+        $location_id = $request->location_id;
             
     
             //もしキーワードが入力されている場合 
             if(!empty($keyword))
             {   
+                // ヒント：ポストを作り出す(Post::のように)のは1度だけでいいかもしれない。
+                // そのあとに、viewのペーぞでif文を使って更に絞ってあげるとできるかもしれない
+                // ヒント２：スコープを使うのはどうだろう！？
+
                 //名前から検索
                 $keyPosts = Post::where('title', 'like', '%'.$keyword.'%')->orWhere('description','like','%'.$keyword.'%')->Paginate(3);
 
-                // $keyPres = Prefecture::where('name', 'like', '%'.$keyword.'%')->Paginate(3);
+                $keyPres = Post::where('prefecture_id','like'.$prefecture_id)->Paginate(3);
 
+                // $keyLoc = Post::where('location_id','like'.$location)->Paginate(3);
 
                 $myposts = Post::where('user_id', Auth::id())->orderBy('created_at','desc')->Paginate(3);
 
-        //                 ->paginate(4);
-    
-                // //リレーション関係にあるテーブルの材料名から検索
-                // $recipes = Recipe::whereHas('ingredients', function ($query) use ($keyword){
-                //     $query->where('ingredient', 'like','%'.$keyword.'%');
-                // })->paginate(4);
                 Session::flash('result',count($keyPosts).'件の検索結果');
                 return view('home')->with('posts',Post::orderBy('created_at','desc')->Paginate(3))   
                                     ->with('keyPosts',$keyPosts)
+                                    ->with('keyPres',$keyPres)
+                                    // ->with('keyLoc',$keyLoc)
                                     ->with('keyword',$keyword)
+                                    ->with('prefecture_id',$prefecture_id)
+                                    ->with('location_id',$location_id)
                                     ->with('prefectures',Prefecture::all())
+                                    ->with('locations',Location::all())
                                     ->with('genres',Genre::all())
                                     ->with('users',User::all())
                                     ->with('myposts',$myposts);
     
             }
 
+            if(!isset($keyword) && isset($prefecture_id,$location_id)){
+
+
+                $keyPres = Post::where('prefecture_id','like',$prefecture_id)->where('location_id','like',$location_id)->Paginate(3);
+
+                $myposts = Post::where('user_id', Auth::id())->orderBy('created_at','desc')->Paginate(3);
+
+                Session::flash('result',count($keyPres).'件の検索結果');
+                return view('home')->with('posts',Post::orderBy('created_at','desc')->Paginate(3))   
+                                    ->with('keyPres',$keyPres)
+                                    ->with('prefecture_id',$prefecture_id)
+                                    ->with('location_id',$location_id)
+                                    ->with('prefectures',Prefecture::all())
+                                    ->with('locations',Location::all())
+                                    ->with('genres',Genre::all())
+                                    ->with('users',User::all())
+                                    ->with('myposts',$myposts);
+            }
+            
+
          $myposts = Post::where('user_id', Auth::id())->orderBy('created_at','desc')->Paginate(3);
 
         return view('home')->with('posts',Post::orderBy('created_at','desc')->Paginate(3))
                             ->with('prefectures',Prefecture::all())
+                            ->with('locations',Location::all())
                             ->with('genres',Genre::all())
                             ->with('users',User::all())
                             ->with('myposts',$myposts);

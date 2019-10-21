@@ -12,17 +12,7 @@
                     <li class="col-md-4"><a href="{{route('profile.index')}}">Profile</a></li>
                  @endif
              </div>
-           </ul>
+           </ul> 
           </nav>
-          @if(Session::has('result'))
-          <div class="alert alert-info text-center">
-              {{session()->get('result')}}
-          </div>
-          @endif
-              @if (session('success'))
-                  <div class="alert alert-success text-center" role="alert">
-                      {{ session('success') }}
-                  </div>
-              @endif
         </div>
        </header>

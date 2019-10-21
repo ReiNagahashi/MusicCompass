@@ -36,8 +36,9 @@
                     </div>
                     <div class="form-group formG_S">
                             <label for="genres">ジャンル</label>
+                            <div class="row">
                          @foreach($genres as $genre)
-                            <div class="checkbox">
+                                 <div class="checkbox col-xs-4">
                                         <label><input type="checkbox" class="labelG_S" name="genres[]" value="{{$genre->id}}"
                                             @if(isset($post))
                                                 @foreach($post->genres as $gen)
@@ -49,6 +50,7 @@
                                         </label>
                                    </div>
                                 @endforeach
+                            </div>
                     </div>
            　　     <div class="form-group text-center">
                         <label for="condition">参加条件</label>

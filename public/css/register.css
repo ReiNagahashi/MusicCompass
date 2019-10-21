@@ -1,7 +1,22 @@
 .forImage{
-    background-image:url("../uploads/background/radio-city-music-hall-2617958_1280.jpg");
-    background-repeat:no-repeat;
+  background-image: url("https://www.needpix.com/file_download.php?url=//storage.needpix.com/rsynced_images/radio-city-music-hall-2617958_1280.jpg");
+  background-repeat:no-repeat;
   background-size: cover;
+}
+
+
+.title{
+  font-size: 45px;
+  font-family: 'Beth Ellen', cursive;
+  color: #D6270C;
+  margin: 0 0 40px 0;
+}
+.clearfix{
+  text-align: center;
+  margin-bottom: 8%;
+}
+.forMenu{
+  justify-content: center;
 }
 
 hr {
@@ -13,6 +28,7 @@ hr {
 }
 #travel{
   color: #fff;
+  margin: 7% 0;
 }
 
 form{
@@ -22,19 +38,41 @@ form{
   margin: auto;
 }
 
+.signUpBox{
+  display: flex;
+  margin: 0 5%;
+}
+
+.formRows .col-xs-6{
+  padding-right: 0px;
+  padding-left: 60px;
+  margin-right: 10px;
+}
+
+#faceBox{
+    background-color: #e9ecef;
+    border-radius:50%;
+    width: 400px;
+}
+
+.facebookPosition{
+  line-height: 20;
+}
+
+.vl {
+  border-left: 5px solid #483d8b;
+  /* height: 500px; */
+  margin: 0 auto;
+
+}
 
 .join-content-box{
   background: #fff;
-  padding: 2% 4%;
+  padding:2% 4%;
 }
-#faceBox{
-    padding:9%; 
-    background-color: #e9ecef;
-}
-
 
 #passBox{
-  background-color: #e9ecef;
+  background-color: #fff;;
 }　
 
 .btn1{
@@ -59,6 +97,7 @@ form{
 }
 
 .forSignIn {
+  margin-top: 5%;
   padding-bottom: 7%;
 }
 .forSignIn a{
@@ -86,4 +125,73 @@ footer ul li a{
   font-size: 15px;
   font-weight: 600;
   letter-spacing: .1rem;
+}
+
+@media screen and (max-width:1190px) and (min-width:768px) {
+
+
+ 
+
+  .signUpBox {
+    height: 300px;
+}
+
+#faceBox {
+  background-color: #e9ecef;
+  border-radius: 50%;
+  width: 300px;
+}
+
+.join-content-box{
+  padding:2% 0;
+}
+
+.formRows .col-xs-6{
+      padding-right: 0px;
+      padding-left: 60px;
+      margin-right: 10px;
+}
+
+}
+
+@media screen and (max-width:768px){
+
+    #travel{
+      font-size: 30px;
+    }
+
+  .signUpBox{
+    height: 400px;
+ }
+
+  #faceBox{
+    height: 50%;
+  }
+  .facebookPosition{
+    line-height: 12;
+  }
+  .vl{
+    margin: 0 4%;
+    display: none;
+  }
+
+  .join-content-box h1{
+    font-size: 22px;
+  }
+
+  #faceBox {
+    width: 300px;
+  margin-right: 20px;
+  height: 200px;
+  }
+
+  form{
+    padding-top: 0;
+  }
+  .formRows .col-xs-6{
+    padding-right: 0px;
+    padding-left: 30px;
+    margin-right: 10px;
+    margin-bottom: 1px;
+  }
 }

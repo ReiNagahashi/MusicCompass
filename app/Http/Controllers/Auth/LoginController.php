@@ -45,6 +45,12 @@ class LoginController extends Controller
     }
 
     public function handleProviderCallback($social){
+
+        if(!$social->has('code') || $social->has('denied')){
+            return redirect('/home');
+        }
+       
+
         $userSocial = Socialite::driver($social)->stateless()->user();
 
         //こんなwhereの書き方があるのか！！これはもしかしたら他のページで参考になるかもしれない！

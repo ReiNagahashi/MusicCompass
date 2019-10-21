@@ -11,6 +11,8 @@
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="{{ asset('js/toastr.min.js') }}"></script>
 
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
@@ -61,6 +63,16 @@
                       </div>
                     </div>
                   </nav>
+                  <script>
+                        @if(Session::has('result'))
+                        toastr.success("{{Session::get('result')}}")
+                        @endif
+                    </script>
+                    <script>
+                        @if(Session::has('success'))
+                        toastr.success("{{Session::get('success')}}")
+                        @endif
+                    </script>
                             @yield('content')
             </div>
     </body>

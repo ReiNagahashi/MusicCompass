@@ -5,11 +5,35 @@
     padding-bottom: 8%
 }
 
+.kywordAndSubmit{
+  display: flex;
+}
+
+.search{
+  flex: 0.88;
+  margin-right: 30px;
+}
+
+.submitForKeyword{
+  flex: 0.1;
+}
+
+.forSecondButtons{
+  font-size: 15px;
+  color: #fff;
+  font-weight: 600;
+  margin: 50px 0 20px 0;
+}
+
 #forB{
  border-bottom: 3px solid #fff;
 }
 .card-header{
  background: #F0F0F0;
+}
+
+.notFoundPage{
+  background-color: #fff;
 }
 
 .card-body h1{
