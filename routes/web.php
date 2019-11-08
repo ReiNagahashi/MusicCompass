@@ -85,7 +85,7 @@ Route::group(['middleware'=>'auth'],function(){
         'as'  => 'profile.setting'
     ]);
     
-    Route::put('/profile/setting',[
+    Route::put('/profile/setting',[ 
         'uses' => 'ProfileController@updateForSetting',
         'as'  => 'profile.update2'
     ]);
@@ -108,6 +108,11 @@ Route::group(['middleware'=>'auth'],function(){
 Route::post('/commentStore',[
     'uses' => 'CommentController@store',
     'as'  => 'comments.store'
+]);
+
+Route::delete('/comment/{id}',[
+    'uses' => 'CommentController@destroy',
+    'as'  => 'comments.delete'
 ]);
 
 // ここからsocialiteのルーティング2つ

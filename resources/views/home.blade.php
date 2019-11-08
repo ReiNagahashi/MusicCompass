@@ -37,7 +37,15 @@
                           </div>
                         </div>
                       </form>
-                    <a class="btn btn-success" href="{{route('posts.create')}}">新規投稿</a>
+                    {{-- <a class="btn btn-success" href="{{route('posts.create')}}">新規投稿</a> --}}
+                    @if(isset(Auth::user()->id))
+                      @component('components.btn-create_edit')
+                        @slot('controller','posts.store')
+                        @slot('prefectures',$prefectures)
+                        @slot('genres',$genres)
+                        @slot('locations',$locations)
+                      @endcomponent
+                    @endif
                     {{-- ここからkeywordのみ --}}
                     @if(isset($keyword))
                     <section class="card cardSearch">

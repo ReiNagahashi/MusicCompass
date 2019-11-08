@@ -52,9 +52,8 @@
                     <i class="seoicon-clock"></i> 
                     {{$time->created_at->toFormattedDateString()}}                                            </time>
                 </p> --}}
-                <hr/>
-                  <h4>コメントを送信する</h4>
-                     <form method="post" action="{{route('comments.store')}}">
+                 <h4>コメントを送信する</h4>
+                    <form method="post" action="{{route('comments.store')}}">
                       @csrf
                         <div class="form-group">
                             <textarea class="form-control" name="body"></textarea>
@@ -62,10 +61,11 @@
                         </div>
                        <div class="form-group">
                            <input type="submit" class="btn btn-success" value="Add Comment" />
-                        </div>
-                    </div>
-                </div>
+                       </div>
+                     </form>
+               </div>
             </div>
+         </div>
     </div>
 </div>
 @endsection

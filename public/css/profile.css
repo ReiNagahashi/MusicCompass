@@ -5,7 +5,7 @@
     padding: 40px;
   }
 
-
+ 
 .null{
   height: 20px;
 }
@@ -37,5 +37,21 @@ ul {
 
 .comment{
   color: #fff;
+}
+
+.forFlex{
+  display: flex;
+}
+
+.proIMG {
+  flex: 1;
+}
+.proIMG img{
+  width: 110px;
+  height: 110px;
+}
+.writing{
+  flex: 4;
+  padding: 15px;
 }
 

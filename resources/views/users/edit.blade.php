@@ -29,7 +29,7 @@
             <div class="form-group formG_S">
                 <label for="location">性別</label>
                         @foreach($sexes as $sex)
-                        <input type="radio" class="labelG_S" id="sex" name="sex_id" value="{{$sex->id}}" class="form-control">{{$sex->sex}}
+                        <label><input type="radio" class="labelG_S" id="sex" name="sex_id" value="{{$sex->id}}" class="form-control" @if(isset($user)) @if($user->profile->sex_id == $sex->id) checked @endif @endif>{{$sex->sex}}</label>
                         @endforeach
            </div>
            <div class="form-group">
@@ -49,9 +49,17 @@
                 <textarea name="intro" cols="30" rows="10"class="form-control">{{isset($user)?$user->profile->intro: ""}}</textarea>
             </div>
             <div class="form-group">
-                    <label for="avatar">プロフィール画像</label>
-                    <input type="file" name="avatar" class="form-control">
-                </div>
+                <label for="avatar">プロフィール画像</label>
+                <input type="file" name="avatar" class="form-control">
+            </div>
+            <div class="form-group">
+                <label for="host_id">ホストステータス</label>
+                <select name="host_id" class="form-control">
+                    @foreach($hosts as $host)
+                      <option value="{{$host->id}}"@if(isset($user)) @if($host->id == $user->profile->host_id) selected @endif @endif>{{$host->name}}</option>
+                    @endforeach
+                </select>
+            </div>
             <div class="form-group text-center">
                 <button type="submit"class="btn btn-success">変更する</button>
             </div>

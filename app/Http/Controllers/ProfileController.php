@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\User;
 use App\Sex;
+use App\Host;
 use App\Profile; 
 use App\Follow; 
 use Illuminate\Support\Facades\Session;
@@ -43,7 +44,8 @@ class ProfileController extends Controller
     public function edit(User $user){
 
         return view('users.edit')->with('user',Auth::user())
-                                 ->with('sexes',Sex::all());
+                                 ->with('sexes',Sex::all())
+                                 ->with('hosts',Host::all());
     }
 
 
@@ -56,6 +58,7 @@ class ProfileController extends Controller
         'interest'=>'required',
         'intro'=>'required',
         'avatar'=>'required',
+        'host_id'=>'required',
         ]);
 
 
@@ -78,6 +81,7 @@ class ProfileController extends Controller
         $user->profile->favorite=$request->favorite;
         $user->profile->interest=$request->interest;
         $user->profile->sex_id=$request->sex_id;
+        $user->profile->host_id=$request->host_id;
         $user->profile->intro=$request->intro;
 
 
@@ -96,8 +100,8 @@ class ProfileController extends Controller
 
     public function updateForSetting(Request $request){
         $this->validate(request(),[
-        'email'=>'required|email',
-        // 'password'=>'required|confirmed'
+        'email'=>'email',
+        'password'=>'required'
         ]);
 
         $user = Auth::user();
@@ -109,23 +113,18 @@ class ProfileController extends Controller
             $user->password = bcrypt($request->password);
             $user->save();
         }
-        // Session::flash('success','Account Profile update');
+        Session::flash('success','Account Profile update');
         return redirect('/profile');
     }
 
     public function create(){
 
-        $id = Profile::where('user_id',Auth::id());
-
-        if('$id' < 1){
             $sexes = Sex::all();
+            $hosts = Host::all();
 
-            return view('users.edit')->with('sexes',$sexes);
-        }else{
-           
-            return redirect('/profile');
-
-        }
+            return view('users.edit')->with('sexes',$sexes)
+                                     ->with('hosts',$hosts);
+        
     }
         
     
@@ -141,7 +140,7 @@ class ProfileController extends Controller
             'intro'=>'required|min:1',
             'avatar'=>'required',
             'sex_id'=>'required',
-
+            'host_id'=>'required',
             
         ]);
 
@@ -155,13 +154,13 @@ class ProfileController extends Controller
         $profile->interest = $request->interest;
         $profile->intro = $request->intro;
         $profile->sex_id =$request->sex_id;
+        $profile->host_id =$request->host_id;
         $profile->user_id = Auth::user()->id;
 
         $avatar = $request->avatar;
         $uploadImg = $avatar->avatar = $request->file('avatar');
         $path = Storage::disk('s3')->putFile('/',$uploadImg,'public');
         $profile->avatar = Storage::disk('s3')->url($path);
-        $profile->save();
 
         $profile->save();
 
@@ -171,5 +170,17 @@ class ProfileController extends Controller
         //redirect index page
         return redirect('/profile');
     }
-    // 
-}
+
+    // public function comments(Profile $profile)
+    // {
+       
+    //             Auth::user()->comments()->create([
+    //                 'target_id' => $profile->id,  
+    //             ]);
+        
+    //             //redirect index page
+    //             return redirect(route('users.show',['profile' => $profile->id]));
+    //     }
+    }
+
+    

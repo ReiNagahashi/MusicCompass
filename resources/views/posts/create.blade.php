@@ -3,7 +3,7 @@
 <head>
      <link rel="stylesheet" href="../css/create.css">
  </head>
-<div class="card pt-5">  
+<div class="card">  
         <div class="card-header">{{isset($post)? '投稿を編集する':'新規投稿'}}</div>
         <div class="card-body">
         @if(count($errors) > 0)

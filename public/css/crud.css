@@ -23,6 +23,22 @@ a{
     font-weight:800;
 }
 
+.forFlex{
+    display: flex;
+}
+
+.proIMG {
+    flex: 1;
+}
+.proIMG img{
+    width: 110px;
+    height: 110px;
+}
+.writing{
+    flex: 4;
+    padding: 15px;
+}
+
 /* マーカー専用 */
 b{
     background:linear-gradient(transparent 76%, #F7539D 0%);

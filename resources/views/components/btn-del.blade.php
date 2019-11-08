@@ -1,5 +1,6 @@
 @php
-    $id_attr = 'modal-delete-' . $controller . '-' . $id;
+    $id_attr = 'modal-delete-' . $controller . '-' . $id; 
+    // このidの記述の意味は同じページに複数の削除ボタンが作られることを想定した上でそれぞれをユニークの属性にしている
 @endphp
 
 {{-- 削除ボタン --}}
@@ -18,7 +19,7 @@
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
-            </div>
+            </div> 
             <div class="modal-body">
                 <p>{{ __('本当に削除してもよろしいですか?') }}</p>
                 <p><strong>{{ $name }}</strong></p>

@@ -118,12 +118,14 @@ class PostsController extends Controller{
                 //validate data
                 $this->validate($request,[
                     // ここはform内にあるname！！！
-                    'title' => 'required|min:3|max:30',
-                    'description'=>'required|min:1',
-                    'condition'=>'nullable|min:1',
-                    'location'=>'required|min:1',
-                    'address'=>'nullable|url|min:1',
-                    'image'=>'nullable',
+                    'title' => 'required|min:5|max:30',
+                    'description'=>'required|min:5',
+                    'condition'=>'required|min:3',
+                    'image'=>'required',
+                    'location'=>'required',
+                    'address'=>'required|max:80',
+                    'prefecture_id'=>'required',
+                    'location_id'=>'required',
                     'genres'=>'required',
                 ]);
         
@@ -157,6 +159,7 @@ class PostsController extends Controller{
 
     }
 
+ 
     public function destroy(Post $post){
         $post->delete();
         Session::flash('success','削除に成功しました。');
@@ -310,6 +313,8 @@ class PostsController extends Controller{
             return redirect(route('posts.show',['post' => $post->id]));
         }
     }
+
+ 
 
         
     }
