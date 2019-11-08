@@ -52,14 +52,14 @@
                 <label for="avatar">プロフィール画像</label>
                 <input type="file" name="avatar" class="form-control">
             </div>
-            <div class="form-group">
+            {{-- <div class="form-group">
                 <label for="host_id">ホストステータス</label>
                 <select name="host_id" class="form-control">
                     @foreach($hosts as $host)
                       <option value="{{$host->id}}"@if(isset($user)) @if($host->id == $user->profile->host_id) selected @endif @endif>{{$host->name}}</option>
                     @endforeach
                 </select>
-            </div>
+            </div> --}}
             <div class="form-group text-center">
                 <button type="submit"class="btn btn-success">変更する</button>
             </div>

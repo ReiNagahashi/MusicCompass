@@ -25,7 +25,7 @@
                         <li class="list-group-item"><a href="/users" class="mr-5">友達</a><a href="{{route('profile.edit',['id'=>$user->id])}}">編集</a></h1></li>
                             <li class="list-group-item">好きなアーティスト： {{$user->profile->favorite}}</li>
                             <li class="list-group-item">気になるジャンル： {{$user->profile->interest}}</li>
-                            <li class="list-group-item">ホストステータス：{{$user->profile->host->name}}</li>
+                            {{-- <li class="list-group-item">ホストステータス：{{$user->profile->host->name}}</li> --}}
                         </ul>
                      </section>
                    </div>

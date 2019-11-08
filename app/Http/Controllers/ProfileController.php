@@ -58,7 +58,7 @@ class ProfileController extends Controller
         'interest'=>'required',
         'intro'=>'required',
         'avatar'=>'required',
-        'host_id'=>'required',
+        // 'host_id'=>'required',
         ]);
 
 
@@ -81,7 +81,7 @@ class ProfileController extends Controller
         $user->profile->favorite=$request->favorite;
         $user->profile->interest=$request->interest;
         $user->profile->sex_id=$request->sex_id;
-        $user->profile->host_id=$request->host_id;
+        // $user->profile->host_id=$request->host_id;
         $user->profile->intro=$request->intro;
 
 
@@ -140,7 +140,7 @@ class ProfileController extends Controller
             'intro'=>'required|min:1',
             'avatar'=>'required',
             'sex_id'=>'required',
-            'host_id'=>'required',
+            // 'host_id'=>'required',
             
         ]);
 
@@ -154,7 +154,7 @@ class ProfileController extends Controller
         $profile->interest = $request->interest;
         $profile->intro = $request->intro;
         $profile->sex_id =$request->sex_id;
-        $profile->host_id =$request->host_id;
+        // $profile->host_id =$request->host_id;
         $profile->user_id = Auth::user()->id;
 
         $avatar = $request->avatar;
