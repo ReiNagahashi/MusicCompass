@@ -20,6 +20,8 @@ class CommentController extends Controller
         $input['user_id'] = auth()->user()->id;
         // $time = Carbon::now();
 
+  
+
         if(isset($input['profile_id'])){
             CommentForUser::create($input);
 

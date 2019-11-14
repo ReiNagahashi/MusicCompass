@@ -1,9 +1,107 @@
-/* .formG_S{
-    display: flex;
-} */
- 
-.labelG_S{
+/* .labelG_S{
     margin-left:10px;
+} */
+.wrapper{
+    padding-top: 80px;
+    background-color: rgba(59, 89, 152, 0.1);
+  }
+  .bigBorder{
+    border: 3px solid skyblue;
+  }
+  #title{
+    position: relative;
+    text-align: center;
+      top: -28px;
+      width: 50%;
+      margin: 0 auto;
+      background-color: rgb(235, 238, 244);
+      font-family: 'Permanent Marker', cursive;
+      font-size: 50px;
+      color: red;
+  
+  }
+  #formEntire{
+    padding:50px;
+  }
+  .forH{
+    margin:5% auto;
+    color: #F3589E;
+    padding: 0px 50px;
+  }
+  .forH hr{
+      display: none;
+  }
+  .forH h1{
+    font-family: 'Permanent Marker', cursive;
+    font-size: 50px;
+    padding: 20px 0;
+  }
+  .forHH1{
+      border-bottom:2px solid #fff;
+      border-top:2px solid #fff;
+
+  }
+  .ForFlex{
+    display: flex;
+    padding: 0 20px;
+  }
+  
+  .forTitle{
+    flex:5;
+  }
+  .forPrefecture{
+    flex:2;
+  }
+  
+  .forDescription{
+    flex:2;
+  }
+  .marginBetween{
+    margin:0 30px;
+  }
+  .formG_S{
+    padding: 0 20px;
+  }
+.checkbox{
+    display: contents;
 }
 
-/* これはクリエイトページなどでの性別・ジャンルを横並びにさせるための記述である */
+  .labelWidth{
+    width: 85px;
+  }
+  
+  .forCondition{
+    margin: 40px auto;
+  }
+  
+  .nameToSubmit{
+    margin: 0 auto;
+    text-align: center;
+  }
+  
+  .forWidth{
+    width: 300px;
+  }
+  
+  .submitOnCreate{
+    width: 200px;
+    margin: 40px 0;
+  }
+  .forPadding{
+    padding:15px;
+  }
+
+  @media screen and (max-width:1190px) and (min-width:768px) {
+    #title{
+        width: 40%;
+    }
+  }
+  @media screen and (max-width:768px){
+    #title{
+        width: 38%;
+    }
+    .forH hr{
+        display: block;
+    }
+  }
+  

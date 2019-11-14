@@ -22,9 +22,20 @@
                                <span class="ml-2">{{$genre->name}}</span>
                             @endforeach
                         </li>
-                        <li class="list-group-item"><p><b>Created By: </b><a href="@if($post->user_id == Auth::user()->id) {{route('profile.index')}} @else {{route('profile.show',['user'=>$post->user->id])}} @endif">
+                        @if(isset($profile))
+                             <li class="list-group-item">
+                                <p><b>Created By: </b><a href="@if($post->user_id == Auth::user()->id) {{route('profile.index')}} @else {{route('profile.show',['user'=>$post->user->id])}} @endif">
+                                  {{$post->user->name}}
+                                </a></p>
+                             </li>
+                        @else
+                        <li class="list-group-item">
+                              <p><b>Created By: 
+                              </b><a href="{{route('profile.index')}}">
                                 {{$post->user->name}}
-                            </a></p></li>
+                              </a></p>
+                        </li>
+                        @endif
                         <li class="list-group-item"><b>Created at : </b>{{$post->created_at->toFormattedDateString()}}</li>
                         
                     </ul>
@@ -40,30 +51,36 @@
                         @endcomponent
 
                         @endif
-                        <a href="{{route('attendees.single',['post' => $post->id])}}" class="btn btn-success">参加者一覧</a>
-                        {{-- <a href="{{route('attendees.update',['post' => $post->id])}}" class="btn btn-info">参加する</a> --}}
+                          @if(isset($profile))
+
+                            <a href="{{route('attendees.single',['post' => $post->id])}}" class="btn btn-success">参加者一覧</a>
+                            {{-- <a href="{{route('attendees.update',['post' => $post->id])}}" class="btn btn-info">参加する</a> --}}
+                          @endif
 
                     <a href="/home" class="btn btn-primary">Back</a>
 
-
-            <div class="card-footer">
-                @include('comments.commentsDisplay', ['comments' => $post->comments, 'post_id' => $post->id])
-                {{-- <p> 
-                    <i class="seoicon-clock"></i> 
-                    {{$time->created_at->toFormattedDateString()}}                                            </time>
-                </p> --}}
-                 <h4>コメントを送信する</h4>
-                    <form method="post" action="{{route('comments.store')}}">
-                      @csrf
+            @if(isset($profile))
+                <div class="card-footer">
+                    @include('comments.commentsDisplay', ['comments' => $post->comments, 'post_id' => $post->id])
+                    {{-- <p> 
+                        <i class="seoicon-clock"></i> 
+                        {{$time->created_at->toFormattedDateString()}}                                            </time>
+                    </p> --}}
+                    <h4>コメントを送信する</h4>
+                        <form method="post" action="{{route('comments.store')}}">
+                        @csrf
+                            <div class="form-group">
+                                <textarea class="form-control" name="body"></textarea>
+                                <input type="hidden" name="post_id" value="{{ $post->id }}" />
+                            </div>
                         <div class="form-group">
-                            <textarea class="form-control" name="body"></textarea>
-                            <input type="hidden" name="post_id" value="{{ $post->id }}" />
+                            <input type="submit" class="btn btn-success" value="Add Comment" />
                         </div>
-                       <div class="form-group">
-                           <input type="submit" class="btn btn-success" value="Add Comment" />
-                       </div>
-                     </form>
-               </div>
+                        </form>
+                </div>
+                @else
+                <h2 id="forUnderline"><a href="/create-profile">プロフィールを作成</a>すれば、他ユーザーとチャットやイベントへの参加機能を使うことが出来ます！</h2>
+               @endif
             </div>
          </div>
     </div>

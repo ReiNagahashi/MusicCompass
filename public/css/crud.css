@@ -39,6 +39,17 @@ a{
     padding: 15px;
 }
 
+#forUnderline{
+    padding: 5%;
+    margin-top: 30px;
+    outline: #fff solid 1px;
+}
+
+#forUnderline a{
+    color: #F7539D;
+    text-decoration: none;
+}
+
 /* マーカー専用 */
 b{
     background:linear-gradient(transparent 76%, #F7539D 0%);

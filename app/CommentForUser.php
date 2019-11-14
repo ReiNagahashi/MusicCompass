@@ -9,7 +9,11 @@ class CommentForUser extends Model
     protected $fillable = ['user_id','profile_id','body'];
 
 
-    public function profile(){
-        return $this->belongsTo('App\Profile');
+    // public function profile(){
+    //     return $this->belongsTo('App\Profile');
+    // }
+
+    public function user(){
+        return $this->belongsTo('App\User');
     }
 }

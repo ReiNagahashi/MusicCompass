@@ -196,4 +196,17 @@ return [
 
     'same_site' => null,
 
+    // $conf = [
+        
+    // ];
+
+    // $uri = isset($SERVER['REQUEST_URI'])? $_SERVER['REQUESTURI'] : '';
+
+    // if(strpos($uri, '/admin/') === 0 || $uri === '/admin'){
+    //     $conf['cookie'] = env(
+    //         'SESSION_COOKIE_ADMIN',
+    //         str_slug(env('APP_NAME','laravel'),'_').'_admin_session'
+    //     );
+    // }
+
 ];

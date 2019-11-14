@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use DB;
 use App\Post;
+use App\Profile;
 use App\User;
 use App\Attend;
 use App\Prefecture;
@@ -34,12 +35,15 @@ class PostsController extends Controller{
         $user_id = Auth::user()->id;
        
         $users = User::where('id','!=',auth::id())->get();
+
+        $profile = Profile::where('user_id','=',Auth::user()->id)->first();
     
         // $post = Post::find($id);
         return view('posts.show')->with('post',$post)
                                  ->with('user_id',$user_id)
                                  ->with('users',$users)
-                                 ->with('genres',Genre::all());
+                                 ->with('genres',Genre::all())
+                                 ->with('profile',$profile);
                                 //  ->with('time',Comment::orderBy('created_at','desc')->first());
         
     }

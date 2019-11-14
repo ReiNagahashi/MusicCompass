@@ -146,3 +146,8 @@ Route::get('/image', 'ImageController@index');
 Route::post('/image', 'ImageController@store')->name('image.store');
 
 
+
+
+Route::group(['prefix' => 'admin'], function () {
+    Voyager::routes();
+});
