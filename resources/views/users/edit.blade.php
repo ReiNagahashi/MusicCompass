@@ -27,9 +27,10 @@
                 <input type="text" name="age" class="form-control"value= "{{isset($user)?$user->profile->age: ""}}">
             </div>
             <div class="form-group formG_S">
-                <label for="location">性別</label>
+                <label for="sex">性別</label>
                         @foreach($sexes as $sex)
-                        <label><input type="radio" class="labelG_S" id="sex" name="sex_id" value="{{$sex->id}}" class="form-control" @if(isset($user)) @if($user->profile->sex_id == $sex->id) checked @endif @endif>{{$sex->sex}}</label>
+                        <label><input type="radio" class="labelG_S" id="sex" name="sex_id" value="{{$sex->id}}" class="form-control" @if(isset($user)) 
+                            @if($user->profile->sex_id == $sex->id) checked @endif @endif>{{$sex->sex}}</label>
                         @endforeach
            </div>
            <div class="form-group">

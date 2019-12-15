@@ -59,9 +59,9 @@ header{
     width: 12%;
     color: #fff;
   }
-  header nav ul li a:hover,
-  header nav ul li a:active,
-  header nav ul li.current a {
+  a:hover,
+  a:active,
+  .current a {
     color: #F05486;
   }
   
@@ -70,6 +70,7 @@ header{
     text-decoration: none;
     font-weight: 600;
   }
+ 
   
   .title{
     font-size: 45px;

@@ -5,6 +5,11 @@
     padding: 40px;
   }
 
+  a{
+    text-decoration: underline;
+    color: #000;
+  }
+
  
 .null{
   height: 20px;
@@ -55,3 +60,14 @@ ul {
   padding: 15px;
 }
 
+/* ここからフォローページ */
+.explanation{
+  text-align: center;
+  font-size: 20px;
+  font-weight: 300;
+  color: #fff;
+  border-top: solid #fff 1px;
+  border-bottom: solid #fff 1px;
+  margin-bottom: 20px;
+}
+/* ここまでフォローページ */

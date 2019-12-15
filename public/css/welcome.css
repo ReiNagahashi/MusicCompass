@@ -1,4 +1,6 @@
-
+:root{
+  --primary-color:#D6270C;
+}
 html, body {
     background-color: #fff;
     /* color: #636b6f; */
@@ -6,6 +8,25 @@ html, body {
     font-weight: 200;
     height: 100vh;
     margin: 0;
+}
+
+img{
+  max-width: 100%;
+  max-height: 100%;
+}
+
+a{
+  text-decoration: none;
+}
+
+.txtL{
+  font-size: 2rem;
+  font-weight: 500;
+}
+
+.txtM{
+  font-size: 1.5rem;
+  font-weight: 400;
 }
 
 .full-height {
@@ -86,14 +107,40 @@ html, body {
 .title {
     font-size: 70px;
     font-family: 'Beth Ellen', cursive;
-    color: #D6270C;
+    color: var(--primary-color);
 }
+
+.parentbox{
+display: flex;
+padding: 2.5rem 0;
+}
+#direction{
+  flex: 1;
+}
+#gallery{
+  flex: 1;
+  justify-content: space-between;
+  align-items: center;
+  text-align: center;
+  height: 100px;
+}
+
+/* .card-img-top{
+  width: 100px;
+} */
+
+.detail{
+  border: 2px solid var(--primary-color);
+  padding: 2rem;
+
+}
+
 #page2 {
   background-image:url("../uploads/background/ethan-judd-yVKGWunM960-unsplash.jpg");
   background-repeat:no-repeat;
   background-size: 100% 160%;
   /* background-position: center; */
-
+ 
 }
 
 /* ここからオリジナルのcssを当てていきます。 */

@@ -8,6 +8,7 @@
     <section class="contents">
         @include('includes.header')
             <div class="container">
+                <div class="explanation">お互いがフォローをした友達の状態になることで、それぞれのプロフィール上でメッセージのやりとりを行うことが出来るようになります。</div>
                    <div class="card">
                      <div class="card-header">
                        <h3>友達一覧</h3>
@@ -42,10 +43,10 @@
                          <div class="col-md-6">
                              <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
                                <li class="nav-item">
-                                 <a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true">フォローリスト</a>
+                                 <a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true">フォロー</a>
                                </li>
                                <li class="nav-item">
-                                 <a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab" aria-controls="pills-profile" aria-selected="false">フォローリクエスト</a>
+                                 <a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab" aria-controls="pills-profile" aria-selected="false">フォロワー</a>
                                </li>
                              </ul>
                              <div class="tab-content" id="pills-tabContent">

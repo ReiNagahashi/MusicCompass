@@ -61,9 +61,10 @@
 
             @if(isset($profile))
                 <div class="card-footer">
+                    <section class="contentBox">
                     @include('comments.commentsDisplay', ['comments' => $post->comments, 'post_id' => $post->id])
                     {{-- <p> 
-                        <i class="seoicon-clock"></i> 
+                        <i class="seoicon-clock"></i>j
                         {{$time->created_at->toFormattedDateString()}}                                            </time>
                     </p> --}}
                     <h4>コメントを送信する</h4>
@@ -77,6 +78,7 @@
                             <input type="submit" class="btn btn-success" value="Add Comment" />
                         </div>
                         </form>
+                    </section>
                 </div>
                 @else
                 <h2 id="forUnderline"><a href="/create-profile">プロフィールを作成</a>すれば、他ユーザーとチャットやイベントへの参加機能を使うことが出来ます！</h2>

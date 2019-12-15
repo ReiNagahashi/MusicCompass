@@ -22,7 +22,7 @@
                      <section class="col-md-5">
                         <ul class="list-group list-group-flush">
                             <li class="list-group-item">名前： {{$user->name}}　年齢： {{$user->profile->age}} 　性別： {{$user->profile->sex->sex}}  出身： {{$user->profile->native}} </li>
-                        <li class="list-group-item"><a href="/users" class="mr-5">友達</a><a href="{{route('profile.edit',['id'=>$user->id])}}">編集</a></h1></li>
+                        <li class="list-group-item"><a href="/users" class="mr-5">フォロワー　( {{$follower_count}} )</a><a href="{{route('profile.edit',['id'=>$user->id])}}">編集</a></h1></li>
                             <li class="list-group-item">好きなアーティスト： {{$user->profile->favorite}}</li>
                             <li class="list-group-item">気になるジャンル： {{$user->profile->interest}}</li>
                             {{-- <li class="list-group-item">ホストステータス：{{$user->profile->host->name}}</li> --}}

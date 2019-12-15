@@ -46,15 +46,6 @@ class User extends \TCG\Voyager\Models\User
         return $this->belongsToMany('App\Post');
     }
 
-    // public function posts(){
-    //     return $this->belongsToMany('App\Post');
-    // }
-
-    // public function followers(){
-    //     return $this->belongsToMany(self::class,'followers','follows_id','user_id')
-    //                 ->withTimestamps();
-    // }
-
     public function follows(){
         return $this->hasMany('App\Follow');
     }
@@ -62,11 +53,6 @@ class User extends \TCG\Voyager\Models\User
     public function isFollowing($target_id){
         return (boolean) $this->follows()->where('target_id',$target_id)->first(['id']);
     }
-
-    // public function getFollowerCount($user_id)
-    // {
-    //     return $this->where('target_id', $user_id)->count();
-    // }
 
 
     public function isAttending($target_id){

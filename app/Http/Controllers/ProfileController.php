@@ -16,28 +16,40 @@ use Illuminate\Support\Facades\Storage;
 
 class ProfileController extends Controller
 {
-    public function index(){
+    public function index(Follow $follow){
 
-       
-        // $follow_count = Auth::user()->isFollowing($user->id) && $user->isFollowing(Auth::User()->id)->count();
-
-        // @if (Auth::User()->isFollowing($user->id) && $user->isFollowing(Auth::User()->id))
+        $follower_count = $follow->getFollowerCount(Auth::user()->id);
 
 
         return view('users.index')->with('user',Auth::user())
                                   ->with('profiles',Profile::first())
-                                  ->with('sex',Sex::first());
+                                  ->with('sex',Sex::first())
+                                  ->with('follower_count',$follower_count);
                                 //   ->with('follow_count',$follow_count);
     }
     
   
 
-    public function show(User $user){
+    public function show(User $user, Follow $follow){
+
+        $login_user = Auth::user()->id;
+       
+        $follow_count = $follow->getFollowCount($user->id);
+        $follower_count = $follow->getFollowerCount($user->id);
+
+        // $friend_count = $follow->getFriendCount($user->id);
+        // $friend_count = Follow::Follower($user->id)->Follow($user->id);
+
 
         return view('users.show')->with('user',$user)
-                                //   ->with('profile',$profile)
+                                  ->with('login_user',$login_user)
                                   ->with('sex',Sex::first())
-                                  ->with('users',User::all());
+                                  ->with('users',User::all())
+                                  ->with('follower_count',$follower_count)
+                                  ->with('follow_count',$follow_count);
+                                //   ->with('friend_count',$friend_count);
+
+
 
     }
 

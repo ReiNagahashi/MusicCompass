@@ -35,7 +35,7 @@
                             <label for="submit">Let's go!</label>
                             <input type="submit" value="検索" class="form-control btn btn-info">
                           </div>
-                        </div>
+                        </div> 
                       </form>
                     {{-- <a class="btn btn-success" href="{{route('posts.create')}}">新規投稿</a> --}}
                     @if(isset(Auth::user()->id))
@@ -139,7 +139,7 @@
                 <div class="card-body forBack">
                <h1>最新の投稿：</h1>
                  <div class="row post">
-                    @foreach($posts as $post)
+                    @foreach($posts as $post) 
                     <div class="col-md-4">
                         <div class="card-img">
                             <a href="{{route('posts.show',['post' => $post->id])}}">
@@ -181,7 +181,7 @@
                     </div>
                      <h5>{{$mypost->locationName}}（{{$mypost->prefecture->name}}）</h5>
                      <div class="forJustify mt-4">
-                        <a href="{{route('posts.show',['post' => $post->id])}}" class="btn btn-success">詳細を見る</a><small>{{$mypost->created_at->toFormattedDateString()}}</small>
+                        <a href="{{route('posts.show',['post' => $mypost->id])}}" class="btn btn-success">詳細を見る</a><small>{{$mypost->created_at->toFormattedDateString()}}</small>
                      </div>
                    </div>
                 </div>

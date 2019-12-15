@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Comment;
+use App\Post;
 use App\CommentForUser;
 // use Carbon\Carbon;
 
@@ -32,15 +33,13 @@ class CommentController extends Controller
          // return redirect(route('posts.show',['post' => $post->id]));
         // return redirect(route('posts.show'))->with('time',$time);
         return back()->with('time',Comment::orderBy('created_at','desc')->first());
-        }
+        } 
  
     }
     public function destroy($id){
        
-     $comment = Comment::find($id)->first();
-     $comment->delete();
-
-        return redirect('users.index');
+    if(Comment::find($id)){$comment = Comment::find($id)->delete(); }else{$comment = CommentForUser::find($id)->delete();}
+     return redirect()->back();
     }
 
 
