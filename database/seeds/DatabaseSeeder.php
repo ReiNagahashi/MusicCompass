@@ -13,11 +13,11 @@ class DatabaseSeeder extends Seeder
     {
         // $this->call(UserTableSeeder::class);
         // $this->call(PostsSeeder::class);
-        //  $this->call(prefecture_locationSeeder::class);
+        //  $this->call(locationsSeeder::class);
         //  $this->call(PrefecturesSeeder::class);
         //  $this->call(SexSeeder::class);
         //  $this->call(GenreSeeder::class);
-         $this->call(HostsSeeder::class);
+        //  $this->call(HostsSeeder::class);
 
 
     }
