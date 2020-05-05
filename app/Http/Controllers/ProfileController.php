@@ -8,11 +8,11 @@ use App\User;
 use App\Sex;
 use App\Host;
 use App\Profile; 
-use App\Follow; 
+use App\Genre;
+use App\Follow;
+use App\Http\Requests\ProfileRequest;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Storage;
-
-
 
 class ProfileController extends Controller
 {
@@ -27,8 +27,6 @@ class ProfileController extends Controller
                                   ->with('follower_count',$follower_count);
                                 //   ->with('follow_count',$follow_count);
     }
-    
-  
 
     public function show(User $user, Follow $follow){
 
@@ -47,9 +45,6 @@ class ProfileController extends Controller
                                   ->with('users',User::all())
                                   ->with('follower_count',$follower_count)
                                   ->with('follow_count',$follow_count);
-                                //   ->with('friend_count',$friend_count);
-
-
 
     }
 
@@ -57,22 +52,11 @@ class ProfileController extends Controller
 
         return view('users.edit')->with('user',Auth::user())
                                  ->with('sexes',Sex::all())
-                                 ->with('hosts',Host::all());
+                                 ->with('genres',Genre::all());
     }
 
 
-    public function update(Request $request,User $user){
-        $this->validate(request(),[
-        'age'=>'required',
-        'sex_id'=>'required',
-        'native'=>'required',
-        'favorite'=>'required',
-        'interest'=>'required',
-        'intro'=>'required',
-        'avatar'=>'required',
-        // 'host_id'=>'required',
-        ]);
-
+    public function update(ProfileRequest $request,User $user){
 
         $user = Auth::user();
 
@@ -91,13 +75,13 @@ class ProfileController extends Controller
         $user->profile->age=$request->age;
         $user->profile->native=$request->native;
         $user->profile->favorite=$request->favorite;
-        $user->profile->interest=$request->interest;
         $user->profile->sex_id=$request->sex_id;
         // $user->profile->host_id=$request->host_id;
         $user->profile->intro=$request->intro;
 
 
         $user->profile->save();
+        $user->profile->genres()->sync($request->genres);
 
 
 
@@ -133,28 +117,16 @@ class ProfileController extends Controller
 
             $sexes = Sex::all();
             $hosts = Host::all();
+            $genres = Genre::all();
 
             return view('users.edit')->with('sexes',$sexes)
-                                     ->with('hosts',$hosts);
-        
+                                     ->with('hosts',$hosts)
+                                     ->with('genres',$genres);
     }
         
     
 
-    public function store(Request $request){
-
-        $this->validate($request,[
-            // ここはform内にあるname！！！ 
-            'age'=>'required|min:1',
-            'native'=>'required|min:1',
-            'favorite'=>'required|min:1',
-            'interest'=>'required|min:1',
-            'intro'=>'required|min:1',
-            'avatar'=>'required',
-            'sex_id'=>'required',
-            // 'host_id'=>'required',
-            
-        ]);
+    public function store(ProfileRequest $request){
 
         // store data into database
         $profile = new Profile;
@@ -163,10 +135,8 @@ class ProfileController extends Controller
         $profile->age = $request->age;
         $profile->native = $request->native;
         $profile->favorite = $request->favorite;
-        $profile->interest = $request->interest;
         $profile->intro = $request->intro;
         $profile->sex_id =$request->sex_id;
-        // $profile->host_id =$request->host_id;
         $profile->user_id = Auth::user()->id;
 
         $avatar = $request->avatar;
@@ -175,24 +145,11 @@ class ProfileController extends Controller
         $profile->avatar = Storage::disk('s3')->url($path);
 
         $profile->save();
-
+        $profile->genres()->attach($request->genres);
 
         Session::flash('success','プロフィールを作成しました！');
 
-        //redirect index page
         return redirect('/profile');
     }
 
-    // public function comments(Profile $profile)
-    // {
-       
-    //             Auth::user()->comments()->create([
-    //                 'target_id' => $profile->id,  
-    //             ]);
-        
-    //             //redirect index page
-    //             return redirect(route('users.show',['profile' => $profile->id]));
-    //     }
     }
-
-    

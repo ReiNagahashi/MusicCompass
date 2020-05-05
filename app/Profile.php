@@ -21,4 +21,8 @@ class Profile extends Model
         return $this->hasMany('App\CommentForUser');
     }
 
+    public function genres(){
+        return $this->belongsToMany('App\Genre');
+    }
+
 }

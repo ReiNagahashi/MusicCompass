@@ -10,6 +10,9 @@ use App\Prefecture;
 use App\Location;
 use App\Comment;
 use App\Genre;
+use App\GenrePost;
+use DB;
+
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 
@@ -32,77 +35,56 @@ class HomeController extends Controller
      */
     public function index(Request $request)
     {
- 
         $keyword = $request->input('keyword');
         $prefecture_id = $request->prefecture_id;
         $location_id = $request->location_id;
-            
-    
-            //もしキーワードが入力されている場合 
-            if(!empty($keyword))
-            {   
-                // ヒント：ポストを作り出す(Post::のように)のは1度だけでいいかもしれない。
-                // そのあとに、viewのペーぞでif文を使って更に絞ってあげるとできるかもしれない
-                // ヒント２：スコープを使うのはどうだろう！？
+        
+        $myposts = Post::where('user_id', Auth::id())->orderBy('created_at','desc')->Paginate(3);
+        $prefectures = Prefecture::all();
+        $locations = Location::all();
+        $genres = Genre::all();
+        $users = User::all();
+        $posts = Post::orderBy('created_at','desc')->Paginate(3);
+        $postImages = Post::inRandomOrder()->limit(3)->pluck('post_image');
 
-                //名前から検索
-                $keyPosts = Post::where('title', 'like', '%'.$keyword.'%')->orWhere('description','like','%'.$keyword.'%')->Paginate(3);
-
-                $keyPres = Post::where('prefecture_id','like'.$prefecture_id)->Paginate(3);
-
-                // $keyLoc = Post::where('location_id','like'.$location)->Paginate(3);
-
-                $myposts = Post::where('user_id', Auth::id())->orderBy('created_at','desc')->Paginate(3);
-
-                Session::flash('result',count($keyPosts).'件の検索結果');
-                return view('home')->with('posts',Post::orderBy('created_at','desc')->Paginate(3))   
-                                    ->with('keyPosts',$keyPosts)
-                                    ->with('keyPres',$keyPres)
-                                    // ->with('keyLoc',$keyLoc)
-                                    ->with('keyword',$keyword)
-                                    ->with('prefecture_id',$prefecture_id)
-                                    ->with('location_id',$location_id)
-                                    ->with('prefectures',Prefecture::all())
-                                    ->with('locations',Location::all())
-                                    ->with('genres',Genre::all())
-                                    ->with('users',User::all())
-                                    ->with('myposts',$myposts);
-    
+        //もしキーワードが入力されている場 
+        if ($keyword || $prefecture_id || $location_id) {
+            if ($keyword) {
+                $keyPosts = Post::where('title', 'like', '%'.$keyword.'%')
+                            ->orWhere('description','like','%'.$keyword.'%')
+                            ->Paginate(3);
             }
 
-            if(!isset($keyword) && isset($prefecture_id,$location_id)){
+            return view('home', compact(['posts', 'prefectures', 'locations', 'genres', 
+                                'users', 'prefecture_id', 'location_id', 'keyword', 
+                                 'keyPosts', 'myposts'])); 
+                                //  'recommends',  return の部分でもifのように条件分岐ができたらrecommendを入れましょう。
+        }
 
 
-                $keyPres = Post::where('prefecture_id','like',$prefecture_id)->where('location_id','like',$location_id)->Paginate(3);
 
-                $myposts = Post::where('user_id', Auth::id())->orderBy('created_at','desc')->Paginate(3);
-
-                Session::flash('result',count($keyPres).'件の検索結果');
-                return view('home')->with('posts',Post::orderBy('created_at','desc')->Paginate(3))   
-                                    ->with('keyPres',$keyPres)
-                                    ->with('prefecture_id',$prefecture_id)
-                                    ->with('location_id',$location_id)
-                                    ->with('prefectures',Prefecture::all())
-                                    ->with('locations',Location::all())
-                                    ->with('genres',Genre::all())
-                                    ->with('users',User::all())
-                                    ->with('myposts',$myposts);
-            }
-            
-
-         $myposts = Post::where('user_id', Auth::id())->orderBy('created_at','desc')->Paginate(3);
-
-        return view('home')->with('posts',Post::orderBy('created_at','desc')->Paginate(3))
-                            ->with('prefectures',Prefecture::all())
-                            ->with('locations',Location::all())
-                            ->with('genres',Genre::all())
-                            ->with('users',User::all())
-                            ->with('myposts',$myposts);
-
-
+        return view('home', compact(['posts', 'prefectures', 'locations', 'genres', 
+                                     'users', 'myposts', 'postImages']));                     
+                                    //  'recommends',
     }
 
     public function show(){
         return view('homepage.aboutus');
     }
+
+    public function welcome() {
+        $postImages = Post::inRandomOrder()->limit(3)->pluck('post_image');
+
+        $postImage = Post::inRandomOrder()->limit(1)->pluck('post_image');
+
+
+        // $post = Post::inRandomOrder()->first('post')
+
+        return view('welcome')->with('postImages', $postImages)
+                              ->with('postImage', $postImage);
+
+    }
+
+
+
 }

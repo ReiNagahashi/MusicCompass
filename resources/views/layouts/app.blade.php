@@ -58,6 +58,7 @@
                                     </form>
                                 </div>
                             </div>
+                            
                             @endguest
                         <a class="nav-item nav-link links" href="{{ route('home.about') }}">About us</a>
                       </div>

@@ -4,7 +4,7 @@
 
 @section('content')
     <head>
-        <link rel="stylesheet" href="css/profile.css">
+        <link rel="stylesheet" href="{{asset('css/profile.css')}}">
     </head>
     <section class="contents">
         @include('includes.header')
