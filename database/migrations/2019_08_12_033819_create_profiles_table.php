@@ -18,12 +18,10 @@ class CreateProfilesTable extends Migration
             $table->string('age');
             $table->string('native');
             $table->text('favorite');
-            $table->text('interest');
             $table->text('intro');
             $table->string('avatar');
             $table->integer('user_id');
             $table->integer('sex_id');
-            $table->integer('host_id');
             $table->timestamps();
         });
 

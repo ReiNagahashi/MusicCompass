@@ -116,11 +116,11 @@ class ProfileController extends Controller
     public function create(){
 
             $sexes = Sex::all();
-            $hosts = Host::all();
+            // $hosts = Host::all();
             $genres = Genre::all();
 
             return view('users.edit')->with('sexes',$sexes)
-                                     ->with('hosts',$hosts)
+                                    //  ->with('hosts',$hosts)
                                      ->with('genres',$genres);
     }
         
